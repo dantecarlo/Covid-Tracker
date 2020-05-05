@@ -18,10 +18,10 @@ const App = () => {
     fetchAPI()
   }, [])
 
-  const handleCountryChange = async country => {
-    const countryData = await fetchData(country)
+  const handleCountryChange = async newCountry => {
+    const countryData = await fetchData(newCountry)
     setCovidData(countryData)
-    setCountry(country)
+    setCountry(newCountry)
   }
 
   return (

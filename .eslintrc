@@ -9,6 +9,7 @@
   "plugins": ["import", "react", "prettier"],
   "extends": [
     "airbnb",
+    "airbnb/hooks",
     "prettier/react",
     "eslint:recommended",
     "plugin:prettier/recommended",
@@ -37,8 +38,7 @@
       }
     ],
     "jsx-a11y/no-noninteractive-element-to-interactive-role": "off",
-    "jsx-a11y/click-events-have-key-events": "off", // onClick on li at LinksMenu.js
-    "endOfLine": "auto"
+    "jsx-a11y/click-events-have-key-events": "off" // onClick on li at LinksMenu.js
   },
   "settings": {
     "react": {

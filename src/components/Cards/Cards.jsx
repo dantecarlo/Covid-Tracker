@@ -4,8 +4,8 @@ import cx from 'classnames'
 
 import { Card, CardContent, Typography, Grid } from '@material-ui/core'
 
-import styles from './Cards.module.css'
 import CountUp from 'react-countup'
+import styles from './Cards.module.css'
 
 const Cards = ({ covidData }) => {
   if (_.isEmpty(covidData)) {
