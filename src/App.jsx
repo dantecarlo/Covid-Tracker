@@ -11,18 +11,15 @@ import { fetchData } from './api'
 import coronaImage from './images/image.png'
 
 const App = () => {
-  const history = createBrowserHistory()
   const [covidData, setCovidData] = useState({})
   const [country, setCountry] = useState('')
 
   useEffect(() => {
     ReactGA.initialize(process.env.REACT_APP_GAID)
 
-    history.listen(location => {
-      ReactGA.set({ page: location.pathname })
-      ReactGA.pageview(location.pathname)
-    })
-  }, [history])
+    ReactGA.set({ page: window.location.pathname + window.location.search })
+    ReactGA.pageview(window.location.pathname + window.location.search)
+  }, [])
 
   useEffect(() => {
     const fetchAPI = async () => {
@@ -39,20 +36,18 @@ const App = () => {
   }
 
   return (
-    <Router history={history}>
-      <div className={styles.container}>
-        <img src={coronaImage} className={styles.image} alt="COVID-19" />
-        <Typography variant="h6" component="h6">
-          Made by{' '}
-          <a href="https://www.linkedin.com/in/dantecnp/" target="_blank" rel="noopener noreferrer">
-            Dante Nuñez
-          </a>
-        </Typography>
-        <Cards covidData={covidData} />
-        <CountryPicker handleCountryChange={handleCountryChange} />
-        <Chart covidData={covidData} country={country} />
-      </div>
-    </Router>
+    <div className={styles.container}>
+      <img src={coronaImage} className={styles.image} alt="COVID-19" />
+      <Typography variant="h6" component="h6">
+        Made by{' '}
+        <a href="https://www.linkedin.com/in/dantecnp/" target="_blank" rel="noopener noreferrer">
+          Dante Nuñez
+        </a>
+      </Typography>
+      <Cards covidData={covidData} />
+      <CountryPicker handleCountryChange={handleCountryChange} />
+      <Chart covidData={covidData} country={country} />
+    </div>
   )
 }
 
