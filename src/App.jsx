@@ -10,18 +10,19 @@ import { fetchData } from './api'
 
 import coronaImage from './images/image.png'
 
-ReactGA.initialize(process.env.REACT_APP_GAID)
-
-const history = createBrowserHistory()
-
-history.listen(location => {
-  ReactGA.set({ page: location.pathname })
-  ReactGA.pageview(location.pathname)
-})
-
 const App = () => {
+  const history = createBrowserHistory()
   const [covidData, setCovidData] = useState({})
   const [country, setCountry] = useState('')
+
+  useEffect(() => {
+    ReactGA.initialize(process.env.REACT_APP_GAID)
+
+    history.listen(location => {
+      ReactGA.set({ page: location.pathname })
+      ReactGA.pageview(location.pathname)
+    })
+  }, [history])
 
   useEffect(() => {
     const fetchAPI = async () => {
